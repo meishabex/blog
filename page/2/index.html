@@ -156,97 +156,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-关于数据库重连相关解决方案一二" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/09/关于数据库重连相关解决方案一二/">关于数据库重连相关解决方案一二</a>
-    </h1>
-  
-
-<br><small>by: lumen 陆贤芳</small>
-        
-        <a href="/2020/06/09/关于数据库重连相关解决方案一二/" class="archive-article-date">
-  	<time datetime="2020-06-09T11:37:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      <p><em><small>保护私人版权，尊重他人版权。转载请注明出处并附带页面链接</small></em></p>
-      
-          
-          
-            <h2 id="常驻内存的PHP程序mysql报错-mysql-has-gone-away"><a href="#常驻内存的PHP程序mysql报错-mysql-has-gone-away" class="headerlink" title="常驻内存的PHP程序mysql报错　mysql has gone away"></a>常驻内存的PHP程序mysql报错　mysql has gone away</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>在lumen/laravel项目中使用hprose rpc，当长时间不请求rpc接口，再重新请求会报错 “mysql has gone away”，目前我们使用的orm有两种 一个是pairs orm，一个是eloquent orm,两个orm对于重连的表示有所区别，pairs orm经过我们自己修改后支持了重连，eloquent orm查看源码后表明是支持重连的，但是依然看到 “mysql has gone away”报错，会导致没有正确返回结果。</p>
-            
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">lumen</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">laravel</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/09/关于数据库重连相关解决方案一二/">All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-leetcode441" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1001,6 +910,101 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/09/多态/">All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-sar-deep-dive" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/09/sar-deep-dive/">微软SAR Deep Dive——推荐系统实践笔记</a>
+    </h1>
+  
+
+<br><small>by: funco 林鸿钊</small>
+        
+        <a href="/2020/03/09/sar-deep-dive/" class="archive-article-date">
+  	<time datetime="2020-03-09T03:33:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <p><em><small>保护私人版权，尊重他人版权。转载请注明出处并附带页面链接</small></em></p>
+      
+          
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上一篇翻译并分享了一篇微软的推荐系统实践案例：<a href="/2020/03/09/sar/">SAR——推荐系统实践笔记</a>，本篇翻译并分享sar原理，原文地址：<a href="https://github.com/microsoft/recommenders/blob/de3782cce370a446e14e6b47e87686867fb7e069/notebooks/02_model/sar_deep_dive.ipynb" target="_blank" rel="noopener">SAR Deep Dive</a>。</p>
+            
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐系统</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">协同过滤</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/09/sar-deep-dive/">All >></a>
         </p>
       
 
