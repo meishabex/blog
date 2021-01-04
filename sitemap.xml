@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bex.meishakeji.com/2020/07/06/sysbench/</loc>
+    
+    <lastmod>2021-01-04T06:07:12.696Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://bex.meishakeji.com/2021/12/30/Go%20Module%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2021-01-04T02:28:39.959Z</lastmod>
@@ -250,13 +257,6 @@
     <loc>https://bex.meishakeji.com/2020/04/20/%E4%BA%8B%E5%8A%A1%E5%9B%9B%E5%A4%A7%E7%89%B9%E5%BE%81/</loc>
     
     <lastmod>2020-09-18T03:42:41.625Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://bex.meishakeji.com/2020/07/06/sysbench/</loc>
-    
-    <lastmod>2020-09-18T03:42:41.602Z</lastmod>
     
   </url>
   

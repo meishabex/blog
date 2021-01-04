@@ -17,15 +17,15 @@
 <meta property="og:site_name" content="Meisha Bex">
 <meta property="og:description" content="Sysbench一款开源的多线程性能测试工具，可提供以下几个方面的测试：  cpu ：提供一个简单的cpu测试 fileIo：文件磁盘io的测试 memory：内存分配及传输速度 thread：线程调度测试 mutex：POSIX的锁测试 OLTP：数据库性能，主要支持MYSQL, PgSQL, Oracle 这3种数据库  安装详看git， 当前操作的Sysbench版本是1.0.17 命令1s">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://bex.meishakeji.com/2020/07/06/sysbench/sysbench/图1.png">
-<meta property="og:image" content="https://bex.meishakeji.com/2020/07/06/sysbench/sysbench/图2.png">
-<meta property="og:image" content="https://bex.meishakeji.com/2020/07/06/sysbench/sysbench/图3.png">
-<meta property="og:image" content="https://bex.meishakeji.com/2020/07/06/sysbench/sysbench/图4.png">
-<meta property="og:updated_time" content="2020-09-18T03:42:41.602Z">
+<meta property="og:image" content="https://bex.meishakeji.com/2020/07/06/sysbench/图1.png">
+<meta property="og:image" content="https://bex.meishakeji.com/2020/07/06/sysbench/图2.png">
+<meta property="og:image" content="https://bex.meishakeji.com/2020/07/06/sysbench/图3.png">
+<meta property="og:image" content="https://bex.meishakeji.com/2020/07/06/sysbench/图4.png">
+<meta property="og:updated_time" content="2021-01-04T06:07:12.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sysbench多线程性能测试工具">
 <meta name="twitter:description" content="Sysbench一款开源的多线程性能测试工具，可提供以下几个方面的测试：  cpu ：提供一个简单的cpu测试 fileIo：文件磁盘io的测试 memory：内存分配及传输速度 thread：线程调度测试 mutex：POSIX的锁测试 OLTP：数据库性能，主要支持MYSQL, PgSQL, Oracle 这3种数据库  安装详看git， 当前操作的Sysbench版本是1.0.17 命令1s">
-<meta name="twitter:image" content="https://bex.meishakeji.com/2020/07/06/sysbench/sysbench/图1.png">
+<meta name="twitter:image" content="https://bex.meishakeji.com/2020/07/06/sysbench/图1.png">
   
     <link rel="alternative" href="/atom.xml" title="Meisha Bex" type="application/atom+xml">
   
@@ -203,12 +203,11 @@
 </ul>
 </li>
 </ul>
-<p>###1. CPU</p>
-<p>cpu测试是在指定时间内，循环进行素数计算。</p>
+<h3 id="1-CPU"><a href="#1-CPU" class="headerlink" title="1. CPU"></a>1. CPU</h3><p>cpu测试是在指定时间内，循环进行素数计算。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysbench cpu run</span><br></pre></td></tr></table></figure>
 <p><strong>常用参数：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- cpu-max-prime: 素数生成数量的上限,  默认10000</span><br><span class="line">- threads: 线程数，默认1</span><br><span class="line">- time: 运行时长，单位秒，默认10秒。一轮素数计算完后若有时间剩余继续计算直至时间耗尽。</span><br><span class="line">- events: event上限次数(每完成一轮素数为一个event)</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/06/sysbench/./sysbench/图1.png" alt="image-20200705141142847" style="zoom: 33%;"></p>
+<p><img src="/2020/07/06/sysbench/图1.png" alt="image-20200705141142847" style="zoom: 33%;"></p>
 <blockquote>
 <p>stddev(标准差): 在相同时间内，多个线程分别完成的素数计算次数是否稳定，如果数值越低，则表示多个线程的结果越接近(即越稳定)。该参数对于单线程无意义。</p>
 </blockquote>
@@ -222,13 +221,13 @@
 <h3 id="2-FileIO"><a href="#2-FileIO" class="headerlink" title="2. FileIO"></a>2. FileIO</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- file-num=N 创建测试文件的数量,默认128个</span><br><span class="line">- file-block-size=N block size大小,默认16K</span><br><span class="line">- file-total-size=SIZE 所有文件的总大小，默认2G</span><br><span class="line">- file-test-mode=STRING 测试类型(seqwr:顺序写, seqrewr:顺序读写, seqrd:顺序读, rndrd:随机读, rndwr:随机写, rndrw:随机读写) </span><br><span class="line">- file-io-mode=STRING I/O模式,需要系统支持,默认sync[sync(同步IO),async(异步IO),mmap()]</span><br><span class="line">- file-async-backlog=N每个线程的异步操作队列数，默认128个，需要--file-io-mode=async;</span><br><span class="line">- file-extra-flags=STRING 使用额外的标志来打开文件&#123;sync,dsync,direct&#125; 。默认为空</span><br><span class="line">- file-fsync-freq=N 当请求数达到多少时执行fsync()刷新,默认100,0代表过程中不执行</span><br><span class="line">- file-fsync-all=[on|off] 执行每一个写操作后执行fsync()刷新操作,默认关闭off</span><br><span class="line">- file-fsync-end=[on|off] 测试结束执行fsync()操作,默认开启on </span><br><span class="line">- file-fsync-mode=STRING 同步刷新方法,默认fsync &#123;fsync, fdatasync&#125; </span><br><span class="line">- file-merged-requests=N合并指定数量的IO请求,0代表不合并,默认0 </span><br><span class="line">- file-rw-ratio=N 读写比例，默认1.5/1</span><br></pre></td></tr></table></figure>
 <p><strong>运行</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sysbench --threads=2 --events=10000 fileio --file-total-size=3G --file-test-mode=rndrw prepare <span class="comment">#准备数据</span></span><br><span class="line">sysbench --threads=2 --events=10000 fileio --file-total-size=3G --file-test-mode=rndrw run <span class="comment">#压测</span></span><br><span class="line">sysbench --threads=2 --events=10000 fileio --file-total-size=3G --file-test-mode=rndrw cleanup <span class="comment">#清除测试数据</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/06/sysbench/./sysbench/图2.png" alt="image-20200705150823536" style="zoom: 50%;"></p>
+<p><img src="/2020/07/06/sysbench/图2.png" alt="image-20200705150823536" style="zoom: 50%;"></p>
 <p><strong>性能指标</strong></p>
 <p>不同场景下read/s, writes/s, readMiB/s和writtent MiB/s越大越好</p>
 <h3 id="3-内存"><a href="#3-内存" class="headerlink" title="3. 内存"></a>3. 内存</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- memory-block-size=SIZE    测试时内存块大小 [1K]</span><br><span class="line">- memory-total-size=SIZE    传输数据总大小 [100G]</span><br><span class="line">- memory-scope=STRING       内存访问范围&#123;global,local&#125;。默认是global</span><br><span class="line">- memory-oper=STRING        内存操作类型 &#123;read, write, none&#125; [write]</span><br><span class="line">- memory-access-mode=STRING 存储器存取方式 &#123;seq:顺序,rnd：随机&#125; [默认：seq]</span><br></pre></td></tr></table></figure>
 <p><strong>运行</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysbench memory --memory-total-size=200G --memory-access-mode=rnd --time=5 run</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/06/sysbench/./sysbench/图3.png" alt="image-20200705152903185" style="zoom:50%;"></p>
+<p><img src="/2020/07/06/sysbench/图3.png" alt="image-20200705152903185" style="zoom:50%;"></p>
 <p><strong>性能指标</strong></p>
 <p>以不同块大小传输一定的数量的数据吞吐量大小{越大越好}</p>
 <h3 id="4-线程"><a href="#4-线程" class="headerlink" title="4. 线程"></a>4. 线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">发送64次测试线程请求，每个线程请求产生2000个数量，每个线程的锁数量为2</span><br><span class="line">sysbench threads --time=5 --thread-yields=2000 --thread-locks=2 --num-threads=64  run</span><br></pre></td></tr></table></figure>
@@ -240,10 +239,9 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">互斥锁测试模拟所有线程在同一时刻并发运行。</span><br><span class="line">sysbench --threads=12 mutex --mutex-num=1000 --mutex-locks=10000 --mutex-loops=10000 run</span><br></pre></td></tr></table></figure>
 <p><strong>性能指标</strong></p>
 <p>并发线程同时申请互斥锁循环一定次数花费的时间{越少越好}</p>
-<p>###6. MySQL</p>
-<p>⚠️ sysbench默认数据库是sbtest, 在准备测试数据时需要先创建sbtest数据库</p>
+<h3 id="6-MySQL"><a href="#6-MySQL" class="headerlink" title="6. MySQL"></a>6. MySQL</h3><p>⚠️ sysbench默认数据库是sbtest, 在准备测试数据时需要先创建sbtest数据库</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">准备数据：sysbench /usr/local/share/sysbench/oltp_read_write.lua --time=180 --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-user=root  --table-size=1000000 --tables=15 --threads=8 prepare</span><br><span class="line"></span><br><span class="line">测试：sysbench /usr/local/share/sysbench/oltp_read_write.lua --time=180 --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-user=root  --table-size=1000000 --tables=15 --threads=8 --report-interval=10 run</span><br><span class="line"></span><br><span class="line">删除数据：</span><br><span class="line">sysbench /usr/local/share/sysbench/oltp_read_write.lua --time=180 --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-user=root  --table-size=1000000 --tables=15 --threads=8 cleaup</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/06/sysbench/./sysbench/图4.png" alt="image-20200705171835747" style="zoom:50%;"></p>
+<p><img src="/2020/07/06/sysbench/图4.png" alt="image-20200705171835747" style="zoom:50%;"></p>
 <p><strong>性能指标：qps、tps越高越好</strong></p>
 
           
@@ -346,7 +344,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令"><span class="toc-number">1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-FileIO"><span class="toc-number">2.</span> <span class="toc-text">2. FileIO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-内存"><span class="toc-number">3.</span> <span class="toc-text">3. 内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-线程"><span class="toc-number">4.</span> <span class="toc-text">4. 线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-互斥锁"><span class="toc-number">5.</span> <span class="toc-text">5. 互斥锁</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令"><span class="toc-number">1.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CPU"><span class="toc-number">2.</span> <span class="toc-text">1. CPU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-FileIO"><span class="toc-number">3.</span> <span class="toc-text">2. FileIO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-内存"><span class="toc-number">4.</span> <span class="toc-text">3. 内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-线程"><span class="toc-number">5.</span> <span class="toc-text">4. 线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-互斥锁"><span class="toc-number">6.</span> <span class="toc-text">5. 互斥锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-MySQL"><span class="toc-number">7.</span> <span class="toc-text">6. MySQL</span></a></li></ol>
                     </div>
                 </span>
             </div>
